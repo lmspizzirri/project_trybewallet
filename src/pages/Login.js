@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addEmail } from '../redux/actions';
 
 class Login extends React.Component {
   state = {
@@ -13,11 +15,17 @@ class Login extends React.Component {
     });
   };
 
+  handleClick = () => {
+    const { history, dispatch } = this.props;
+    const { email } = this.state;
+    dispatch(addEmail(email));
+    history.push('/carteira');
+  };
+
   render() {
     const emailPattern = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
     const passwordLength = 5;
     const { email, password } = this.state;
-    const { history } = this.props;
 
     return (
       <div>
@@ -39,9 +47,7 @@ class Login extends React.Component {
         <button
           type="submit"
           disabled={ !(emailPattern.test(email) && password.length > passwordLength) }
-          onClick={ () => {
-            history.push('/carteira');
-          } }
+          onClick={ this.handleClick }
         >
           Entrar
         </button>
@@ -50,8 +56,8 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
-
 Login.propTypes = {
   history: PropTypes.func,
 }.isRequired;
+
+export default connect()(Login);
