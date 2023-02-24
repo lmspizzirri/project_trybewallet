@@ -31,11 +31,12 @@ class Login extends React.Component {
       <div>
         <h1>Login</h1>
         <input
-          type="email"
+          type="text"
           data-testid="email-input"
           name="email"
           placeholder="Email"
           onChange={ this.handleChange }
+          value={ email }
         />
         <input
           type="password"
@@ -43,6 +44,7 @@ class Login extends React.Component {
           name="password"
           placeholder="Senha"
           onChange={ this.handleChange }
+          value={ password }
         />
         <button
           type="submit"
@@ -58,6 +60,7 @@ class Login extends React.Component {
 
 Login.propTypes = {
   history: PropTypes.func,
+  dispatch: PropTypes.func,
 }.isRequired;
 
 export default connect()(Login);
