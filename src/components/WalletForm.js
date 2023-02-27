@@ -95,7 +95,7 @@ class WalletForm extends Component {
           <option> Transporte </option>
           <option> Saúde </option>
         </select>
-        <button type="button" onClick={ this.handleClick }>Adicionar depesa</button>
+        <button type="button" onClick={ this.handleClick }>Adicionar despesa</button>
       </div>
     );
   }
