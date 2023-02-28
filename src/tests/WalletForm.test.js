@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import { renderWithRouterAndRedux } from './renderWith';
-import WalletForm from '../../components/WalletForm';
+import { renderWithRouterAndRedux } from './helpers/renderWith';
+import WalletForm from '../components/WalletForm';
 
 test('Input para inserir o valor', () => {
   renderWithRouterAndRedux(<WalletForm />);

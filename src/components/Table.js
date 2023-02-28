@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteCard } from '../redux/actions';
+import { deleteCard, editCard } from '../redux/actions';
 
 class Table extends Component {
   handleClick = (param) => {
     const { dispatch } = this.props;
     dispatch(deleteCard(param));
+  };
+
+  handleClickEdit = (id) => {
+    const { dispatch } = this.props;
+    dispatch(editCard(id));
   };
 
   render() {
@@ -51,6 +56,7 @@ class Table extends Component {
                 <button
                   type="button"
                   data-testid="edit-btn"
+                  onClick={ this.handleClickEdit(element.id) }
                 >
                   Editar despesa
                 </button>

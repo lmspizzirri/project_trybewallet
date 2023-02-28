@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import { renderWithRouterAndRedux } from './renderWith';
-import Header from '../../components/Header';
+import { renderWithRouterAndRedux } from './helpers/renderWith';
+import Header from '../components/Header';
 
 test('Teste o câmbio', () => {
   renderWithRouterAndRedux(<Header />);
