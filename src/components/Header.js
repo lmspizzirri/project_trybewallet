@@ -12,8 +12,8 @@ class Header extends Component {
           <h2
             data-testid="total-field"
           >
-            { expenses.reduce((sum, { value, currency, exchangeInfo }) => {
-              sum += Number(value) * Number(exchangeInfo[currency].ask);
+            { expenses.reduce((sum, { value, currency, exchangeRates }) => {
+              sum += Number(value) * Number(exchangeRates[currency].ask);
               return Number(sum);
             }, 0).toFixed(2) }
           </h2>
