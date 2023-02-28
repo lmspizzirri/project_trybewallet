@@ -12,7 +12,7 @@ class Table extends Component {
   render() {
     const { expenses } = this.props;
     return (
-      <>
+      <tbody>
         {expenses.map(((element) => (
           <tr key={ element.id }>
             <th data-testid="th-dscp">{ element.description }</th>
@@ -46,7 +46,7 @@ class Table extends Component {
             </th>
           </tr>
         )))}
-      </>
+      </tbody>
     );
   }
 }
