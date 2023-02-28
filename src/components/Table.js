@@ -12,41 +12,59 @@ class Table extends Component {
   render() {
     const { expenses } = this.props;
     return (
-      <tbody>
-        {expenses.map(((element) => (
-          <tr key={ element.id }>
-            <td data-testid="th-dscp">{ element.description }</td>
-            <td data-testid="th-tag">{ element.tag}</td>
-            <td data-testid="th-method">{ element.method}</td>
-            <td data-testid="th-value">{ Number(element.value).toFixed(2)}</td>
-            <td data-testid="th-name">{ element.exchangeRates[element.currency].name}</td>
-            <td data-testid="th-currency">
-              {
-                Number(element.exchangeRates[element.currency].ask).toFixed(2)
-              }
-            </td>
-            <td data-testid="th-price">
-              { Number(element.exchangeRates[element.currency].ask * element.value)}
-            </td>
-            <td data-testid="th-cambio">Real</td>
-            <td>
-              <button
-                type="button"
-                data-testid="edit-btn"
-              >
-                Editar despesa
-              </button>
-              <button
-                type="button"
-                data-testid="delete-btn"
-                onClick={ () => this.handleClick(element.id) }
-              >
-                Excluir
-              </button>
-            </td>
+      <table>
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Método de Pagamento</th>
+            <th>Valor</th>
+            <th>Moeda</th>
+            <th>Câmbio utilizado</th>
+            <th>Valor convertido</th>
+            <th>Moeda de Conversão</th>
+            <th>Editar/Excluir</th>
           </tr>
-        )))}
-      </tbody>
+        </thead>
+        <tbody>
+          {expenses.map(((element) => (
+            <tr key={ element.id }>
+              <td data-testid="th-dscp">{ element.description }</td>
+              <td data-testid="th-tag">{ element.tag}</td>
+              <td data-testid="th-method">{ element.method}</td>
+              <td data-testid="th-value">{ Number(element.value).toFixed(2)}</td>
+              <td
+                data-testid="th-name"
+              >
+                { element.exchangeRates[element.currency].name}
+              </td>
+              <td data-testid="th-currency">
+                {
+                  Number(element.exchangeRates[element.currency].ask).toFixed(2)
+                }
+              </td>
+              <td data-testid="th-price">
+                { Number(element.exchangeRates[element.currency].ask * element.value)}
+              </td>
+              <td data-testid="th-cambio">Real</td>
+              <td>
+                <button
+                  type="button"
+                  data-testid="edit-btn"
+                >
+                  Editar despesa
+                </button>
+                <button
+                  type="button"
+                  data-testid="delete-btn"
+                  onClick={ () => this.handleClick(element.id) }
+                >
+                  Excluir
+                </button>
+              </td>
+            </tr>
+          )))}
+        </tbody>
+      </table>
     );
   }
 }
