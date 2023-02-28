@@ -56,7 +56,7 @@ class Table extends Component {
                 <button
                   type="button"
                   data-testid="edit-btn"
-                  onClick={ this.handleClickEdit(element.id) }
+                  onClick={ () => this.handleClickEdit(element.id) }
                 >
                   Editar despesa
                 </button>
