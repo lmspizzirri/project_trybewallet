@@ -15,17 +15,27 @@ class Table extends Component {
       <>
         {expenses.map(((element) => (
           <tr key={ element.id }>
-            <th>{ element.description }</th>
-            <th>{ element.tag}</th>
-            <th>{ element.method}</th>
-            <th>{ Number(element.value).toFixed(2)}</th>
-            <th>{ element.exchangeRates[element.currency].name}</th>
-            <th>{ Number(element.exchangeRates[element.currency].ask).toFixed(2)}</th>
-            <th>
+            <th data-testid="th-dscp">{ element.description }</th>
+            <th data-testid="th-tag">{ element.tag}</th>
+            <th data-testid="th-method">{ element.method}</th>
+            <th data-testid="th-value">{ Number(element.value).toFixed(2)}</th>
+            <th data-testid="th-name">{ element.exchangeRates[element.currency].name}</th>
+            <th data-testid="th-currency">
+              {
+                Number(element.exchangeRates[element.currency].ask).toFixed(2)
+              }
+            </th>
+            <th data-testid="th-price">
               { Number(element.exchangeRates[element.currency].ask * element.value)}
             </th>
-            <th>Real</th>
+            <th data-testid="th-cambio">Real</th>
             <th>
+              <button
+                type="button"
+                data-testid="edit-btn"
+              >
+                Editar despesa
+              </button>
               <button
                 type="button"
                 data-testid="delete-btn"
