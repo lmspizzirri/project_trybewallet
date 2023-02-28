@@ -1,4 +1,4 @@
-import { SAVE_COIN, SAVE_EXPENSE } from '../actions';
+import { DELETE_CARD, SAVE_COIN, SAVE_EXPENSE } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -18,6 +18,11 @@ const coinReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: [...state.expenses, action.payload],
+    };
+  case DELETE_CARD:
+    return {
+      ...state,
+      expenses: state.expenses.filter((element) => Number(element.id) !== action.payload),
     };
   default:
     return state;

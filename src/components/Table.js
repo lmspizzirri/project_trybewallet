@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { deleteCard } from '../redux/actions';
 
 class Table extends Component {
+  handleClick = (param) => {
+    const { dispatch } = this.props;
+    dispatch(deleteCard(param));
+  };
+
   render() {
     const { expenses } = this.props;
     return (
-      <div>
+      <>
         {expenses.map(((element) => (
           <tr key={ element.id }>
             <th>{ element.description }</th>
@@ -19,10 +25,18 @@ class Table extends Component {
               { Number(element.exchangeRates[element.currency].ask * element.value)}
             </th>
             <th>Real</th>
-            <th>Editar/Excluir</th>
+            <th>
+              <button
+                type="button"
+                data-testid="delete-btn"
+                onClick={ () => this.handleClick(element.id) }
+              >
+                Excluir
+              </button>
+            </th>
           </tr>
         )))}
-      </div>
+      </>
     );
   }
 }

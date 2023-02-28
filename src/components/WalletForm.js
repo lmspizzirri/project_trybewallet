@@ -30,12 +30,11 @@ class WalletForm extends Component {
     const { dispatch } = this.props;
     const { id, value, description, currency, method, tag } = this.state;
     const exchangeRates = await apiCall();
-    this.setState({ id: id + 1 });
     dispatch(addExchanges({
       id, value, description, currency, method, tag, exchangeRates }));
 
     this.setState({
-      id: Number(0),
+      id: id + 1,
       value: '',
       description: '',
       currency: 'USD',

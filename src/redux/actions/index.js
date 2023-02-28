@@ -1,6 +1,7 @@
 export const SAVE_EMAIL = 'SAVE_EMAIL';
 export const SAVE_COIN = 'SAVE_COIN';
 export const SAVE_EXPENSE = 'SAVE_EXPENSE';
+export const DELETE_CARD = 'DELETE_CARD';
 
 export const addEmail = (email) => ({
   type: SAVE_EMAIL,
@@ -14,6 +15,11 @@ const addCoin = (currencies) => ({
 
 export const addExchanges = (payload) => ({
   type: SAVE_EXPENSE,
+  payload,
+});
+
+export const deleteCard = (payload) => ({
+  type: DELETE_CARD,
   payload,
 });
 
