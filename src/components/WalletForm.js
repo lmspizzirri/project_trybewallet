@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import apiCall from '../services/apiCall';
 import addCoin, { addExchanges, editorCard } from '../redux/actions';
 
+const tagInitial = 'Alimentação';
+
 class WalletForm extends Component {
   state = {
     id: Number(0),
@@ -11,7 +13,7 @@ class WalletForm extends Component {
     description: '',
     currency: 'USD',
     method: 'Dinheiro',
-    tag: 'Alimentação',
+    tag: tagInitial,
   };
 
   async componentDidMount() {
@@ -32,6 +34,13 @@ class WalletForm extends Component {
     const exchangeRates = await apiCall();
     dispatch(editorCard({
       id: idToEdit, value, description, currency, method, tag, exchangeRates }));
+    this.setState({
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: tagInitial,
+    });
   };
 
   handleClick = async () => {
@@ -47,7 +56,7 @@ class WalletForm extends Component {
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
-      tag: 'Alimentação',
+      tag: tagInitial,
     });
   };
 
