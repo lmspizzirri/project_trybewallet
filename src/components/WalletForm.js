@@ -6,7 +6,7 @@ import addCoin, { addExchanges } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
-    id: '0',
+    id: Number(0),
     value: '',
     description: '',
     currency: 'USD',
@@ -29,13 +29,13 @@ class WalletForm extends Component {
   handleClick = async () => {
     const { dispatch } = this.props;
     const { id, value, description, currency, method, tag } = this.state;
-    const exchangeInfo = await apiCall();
+    const exchangeRates = await apiCall();
     this.setState({ id: id + 1 });
     dispatch(addExchanges({
-      id, value, description, currency, method, tag, exchangeInfo }));
+      id, value, description, currency, method, tag, exchangeRates }));
 
     this.setState({
-      id: '0',
+      id: Number(0),
       value: '',
       description: '',
       currency: 'USD',

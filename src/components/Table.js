@@ -9,15 +9,17 @@ class Table extends Component {
       <div>
         {expenses.map(((element) => (
           <tr key={ element.id }>
-            <td>{ element.description }</td>
-            <td>{ element.tag}</td>
-            <td>{ element.metdod}</td>
-            <td>{ Number(element.value).toFixed(2)}</td>
-            <td>{ element.exchangeInfo[element.currency].name}</td>
-            <td>{ Number(element.exchangeInfo[element.currency].ask).toFixed(2)}</td>
-            <td>{ Number(element.exchangeInfo[element.currency].ask * element.value)}</td>
-            <td>Real</td>
-            <td>Editar/Excluir</td>
+            <th>{ element.description }</th>
+            <th>{ element.tag}</th>
+            <th>{ element.method}</th>
+            <th>{ Number(element.value).toFixed(2)}</th>
+            <th>{ element.exchangeRates[element.currency].name}</th>
+            <th>{ Number(element.exchangeRates[element.currency].ask).toFixed(2)}</th>
+            <th>
+              { Number(element.exchangeRates[element.currency].ask * element.value)}
+            </th>
+            <th>Real</th>
+            <th>Editar/Excluir</th>
           </tr>
         )))}
       </div>
