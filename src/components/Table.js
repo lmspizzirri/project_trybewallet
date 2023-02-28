@@ -49,7 +49,10 @@ class Table extends Component {
                 }
               </td>
               <td data-testid="th-price">
-                { Number(element.exchangeRates[element.currency].ask * element.value)}
+                {
+                  Number(element.exchangeRates[element.currency].ask * element.value)
+                    .toFixed(2)
+                }
               </td>
               <td data-testid="th-cambio">Real</td>
               <td>
